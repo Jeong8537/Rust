@@ -1,4 +1,3 @@
-<img src="https://prev.rust-lang.org/logos/rust-logo-512x512-blk.png" width="100" height="100" /><br>
 # Rust_공부
 ```
 Rust 기본문 및 예문 정리하는 페이지 입니다!
