@@ -175,9 +175,255 @@
 //     println!("{}", name);
 // }
 
+// fn main() {
+//     let greet = String::from("Hi😊 buzzi!");
+//     let greet_chars: Vec<char> = greet.chars().collect();
+//     let name = &greet_chars[4..].iter().collect::<String>();
+//     println!("{:?}", name);
+// }
+
+// enumeration [1]
+// #[derive(Debug)]
+
+// enum Languages {
+//     Python,
+//     Rust,
+//     Javascript,
+//     Go,
+// }
+
+// impl Languages {
+//     fn echo(&self) {
+//         println!("{:?}", &self);
+//     }
+// }
+
+// fn main() {
+//     let language = Languages::Rust;
+//     language.echo();
+
+//     match language {
+//         Languages::Python => println!("I Love Python!"),
+//         Languages::Go => println!("I Love Go!"),
+//         Languages::Javascript => println!("I Love Javascript!"),
+//         _ => println!("I Love Rust!🍕")
+//     }
+// }
+
+// enumeration [2]
+// #[derive(Debug)]
+
+// enum Grade {
+//     A,
+//     B,
+//     C,
+// }
+
+// enum Job {
+//     Student(Grade, String),
+//     Developer(String),
+// }
+
+// fn main() {
+//     let indo = Job::Student(Grade::A, "Indo".to_string());
+
+//     match indo{
+//         Job::Student(grade, name) => {
+//             println!("{} is a student with grade {:?}", name, grade);
+//         }
+//         Job::Developer(name) => {
+//             println!("{} is a developer", name);
+//         }
+//     }
+// }
+
+// Option<T> [1]
+// fn main() {
+//     let some_number = Some(5);
+//     let some_string = Some("Hello, world!");
+
+//     let absent_number: Option<i32> = None;
+
+//     println!("{:?} {:?} {:?}", some_number, some_string, absent_number);
+// }
+
+
+// Option<T> with match
+// fn check_len(vec: Vec<i32>) -> Option<usize> {
+//     match vec.len() {
+//         0 => None,
+//         _ => Some(vec.len()),
+//     }
+// }
+
+// fn main() {
+//     let nums = vec![1, 2, 3];
+
+//     match check_len(nums) {
+//         Some(len) => println!("Length: {}", len),
+//         None => println!("No elements!"),
+//     }
+// }
+
+// if let
+// fn main() {
+//     let val = Some(5);
+//     match val{
+//         Some(5) => println!("Five!"),
+//         _ => (),
+//     }
+
+//     if let Some(5) = val {
+//         println!("Five!");
+//     }
+// }
+
+
+// Result<T, E> - match
+// use std::fs::File;
+// use std::io::Read;
+
+// fn main() {
+//     let mut s = String::new();
+//     match File::open("hello.txt") {
+//         Ok(mut File) => {
+//             file.read_to_string(&mut s).unwrap();
+//             println!("{}", s);
+//         }
+//         Err(error) => panic!("Error opening file: {:?}", error),
+//     };
+// }
+
+// Result<T, E> - if let
+// use std::fs::File;
+// use std::io::Read;
+
+// fn main() {
+//     let mut s = String::new();
+//     if let Ok(mut file) = File::open("hello.txt") {
+//         file.read_to_string(&mut s).unwrap();
+//         println!("{}", s);
+//     } else {
+//         panic!("Error opening file");
+//     }
+// }
+
+// Result<T, E> - ? 연산자
+
+// use std::fs::File;
+// use std::io::{self, Write};
+
+// fn write_info(name: &str) -> io::Result<()> {
+//     match File::create("my_best_friends.txt") {
+//         Err(e) => return Err(e),
+//         OK(mut f) => {
+//             if let Err(e) = f.write_all(format!("name: {}\n", name).as_bytes()) {
+//                 return Err(e);
+//             }
+//         }
+//     };
+//     Ok(())
+// }
+
+// fn main() {
+//     if let Ok(_) = write_info("John") {
+//         println!("Writing to file successful!");
+//     }       
+// }
+
+// use std::fs::File;
+// use std::io::{self, Write};
+
+// fn write_info(name: &str) -> io::Result<()> {
+//     let mut file = File::create("my_best_friends.txt")?;
+//     file.write_all(format!("name: {}\n", name).as_bytes())?;
+//     Ok(())
+// }
+
+// fn main() {
+//     if let Ok(_) = write_info("John") {
+//         println!("Writing to file successful!");
+//     }
+// }
+
+// iterator [1]
+// fn main() {
+//     let names = vec!["John", "Alice", "Bob"];
+//     for name in names.iter() {
+//         println!("{}", name);
+//     }
+//     println!("{:?}", names);
+// }
+
+// iterator [2]
+// fn main() {
+//     let names = vec!["John", "Alice", "Bob"];
+//     let names_iter = names.iter();
+//     for name in names_iter {
+//         println!("{}", name);
+//     }
+//     println!("{:?}", names);
+// }
+
+// iterator - useful(sum, max, min)
+// fn main() {
+//     let num = vec![1, 2, 3];
+
+//     let sum: i32 = num.iter().sum();
+//     let max = num.iter().max().unwrap();
+//     let min = num.iter().min().unwrap();
+//     println!("Sum: {}, Max: {}, Min: {}", sum, max, min);
+// }
+
+//method to create a new iterator
+// fn main() {
+//     let nums1 = vec![1, 2, 3];
+//     let nums2 = vec![4, 5, 6];
+
+//     let enumer: Vec<(usize, &i32)> = nums1.iter().enumerate().collect();
+//     println!("{:?}", enumer);
+
+//     let zip: Vec<(&i32, &i32)> = nums1.iter().zip(nums2.iter()).collect();
+//     println!("{:?}", zip);
+// }
+
+// map, filter
+// fn main() {
+//     let nums: Vec<i32> = vec![1, 2, 3];
+
+//     let f = |x: &i32| x + 1;
+
+//     let maps: Vec<i32> = nums.iter().map(f).collect();
+//     println!("{:?}", maps);
+
+//     let filters: Vec<i32> = nums.into_iter().filter(|&x| x % 2 == 1).collect();
+//     println!("{:?}", filters);
+// }
+
+// map, filter - vec clone
+// fn main() {
+//     let nums: Vec<i32> = vec![1, 2, 3];
+//     let f = |x: &i32| x + 1;
+
+//     let maps: Vec<i32> = nums.iter().map(f).collect();
+//     println!("{:?}", maps);
+
+//     let filters: Vec<i32> = nums.clone().into_iter().filter(|&x| x % 2 == 1).collect();
+//     println!("{:?}", filters);
+
+//     println!("{:?}", nums);
+// }
+
+// map, filter cloned - iterator clone
 fn main() {
-    let greet = String::from("Hi😊 buzzi!");
-    let greet_chars: Vec<char> = greet.chars().collect();
-    let name = &greet_chars[4..].iter().collect::<String>();
-    println!("{:?}", name);
+    let nums: Vec<i32> = vec![1, 2, 3];
+    let f = |x: &i32| x + 1;
+
+    let maps: Vec<i32> = nums.iter().map(f).collect();
+    println!("{:?}", maps);
+
+    let filters: Vec<i32> = nums.iter().filter(|&x| x % 2 == 1).cloned().collect();
+    println!("{:?}", filters);
+
+    println!("{:?}", nums);
 }

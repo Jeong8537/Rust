@@ -61,22 +61,74 @@
 
 # tup1[0] = 3
 
-songs = {
-    "Toto" : "Africa",
-    "Post Malone": "Rockstar",
-    "twenty one pilots" : "Stressed Out",
-}
+# songs = {
+#     "Toto" : "Africa",
+#     "Post Malone": "Rockstar",
+#     "twenty one pilots" : "Stressed Out",
+# }
 
-print("---playlist---")
-if "Toto" in songs and "Africa" in songs.values():
-    print("Toto's Africa is the best song!")
+# print("---playlist---")
+# if "Toto" in songs and "Africa" in songs.values():
+#     print("Toto's Africa is the best song!")
 
-songs["a-ha"] = "Take on Me"
-songs["Post Malone"] = "Happier"
+# songs["a-ha"] = "Take on Me"
+# songs["Post Malone"] = "Happier"
 
-for artist, title in songs.items():
-    print(f"{artist}: {title}")
-print("--------------------------------")
+# for artist, title in songs.items():
+#     print(f"{artist}: {title}")
+# print("--------------------------------")
 
-songs.pop("Post Malone")
-print(songs.get("Post Malone", "Post Malone is not in the playlist"))
+# songs.pop("Post Malone")
+# print(songs.get("Post Malone", "Post Malone is not in the playlist"))
+
+# [python enumeration]
+# from enum import Enum
+
+# class Language(Enum):
+#     PYTHON = "python"
+#     RUST = "rust"
+#     JAVASCRIPT = "javascript"
+#     GO = "go"
+
+#     def echo(self):
+#         print(self.name)
+
+# language = Language.RUST
+# language.echo()
+
+# if language == Language.PYTHON:
+#     print("I love Python!")
+# elif language == Language.GO:
+#     print("I Love Go!")
+# elif language == Language.JAVASCRIPT:
+#     print("I love JavaScript!")
+# else :
+#     print("I Love Rust!")
+
+# names = ["james", "cameron", "indo"]
+# for name in names:
+#     print(name)
+
+# print(names)
+
+# nums = [1, 2, 3]
+
+# sum = sum(nums)
+# max = max(nums)
+# min = min(nums)
+# print(f"Sum: {sum}, Max: {max}, Min: {min}")
+
+# nums1 = [1, 2, 3]
+# nums2 = [4, 5, 6]
+
+# enumer = list(enumerate(nums1))
+# print(enumer)
+# zip = list(zip(nums1, nums2))
+# print(zip)
+
+nums = [1, 2, 3]
+
+f = lambda x: x + 1
+
+print(list(map(f, nums)))
+print(list(filter(lambda x: x % 2 == 1, nums)))
